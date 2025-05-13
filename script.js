@@ -1,10 +1,12 @@
-// Wait for DOM to fully load
+// FileMergerPro Landing Page Interactive Functions
 document.addEventListener('DOMContentLoaded', function() {
     // Variables
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const scrollTopBtn = document.getElementById('scrollTop');
     
     // Mobile Navigation Toggle
     if (navToggle) {
@@ -76,6 +78,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // FAQ Accordion Functionality
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Toggle current item
+            item.classList.toggle('active');
+            
+            // Update icon
+            const icon = item.querySelector('.faq-toggle i');
+            if (item.classList.contains('active')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+            
+            // Close other items (uncomment to make it work like an accordion)
+            // faqItems.forEach(otherItem => {
+            //     if (otherItem !== item && otherItem.classList.contains('active')) {
+            //         otherItem.classList.remove('active');
+            //         const otherIcon = otherItem.querySelector('.faq-toggle i');
+            //         otherIcon.classList.remove('fa-minus');
+            //         otherIcon.classList.add('fa-plus');
+            //     }
+            // });
+        });
+    });
+    
     // Smooth scrolling for anchor links
     const smoothScrollLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
     smoothScrollLinks.forEach(link => {
@@ -99,13 +131,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Scroll to top button visibility
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top functionality
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
     // Add animation when elements enter viewport
     const animateOnScroll = function() {
         // Elements to animate
         const elements = [
             ...document.querySelectorAll('.feature-content'),
             ...document.querySelectorAll('.step'),
-            ...document.querySelectorAll('.download-option')
+            ...document.querySelectorAll('.download-option'),
+            ...document.querySelectorAll('.faq-item')
         ];
         
         elements.forEach(element => {
@@ -113,12 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowHeight = window.innerHeight;
             
             // If element is in viewport
-            if (elementPosition < windowHeight - 100) {
+            if (elementPosition < windowHeight - 50) {
                 if (!element.classList.contains('animated')) {
                     element.classList.add('animated');
-                    element.style.animation = 'fadeIn 0.6s ease forwards';
-                    // Add slight delay for each successive element
-                    element.style.animationDelay = '0.1s';
                 }
             }
         });
@@ -129,85 +178,95 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check for new elements entering viewport during scroll
     window.addEventListener('scroll', animateOnScroll);
+
+    // Heartbeat animation
+    const heart = document.querySelector('.heart');
+    if (heart) {
+        // Start animation after a short delay
+        setTimeout(() => {
+            heart.classList.add('beating');
+        }, 1000);
+    }
     
-    // Initialize animated counters for statistics (if added later)
-    const initCounters = function() {
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; // Animation speed in milliseconds
-        
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / speed;
-            
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(initCounters, 1);
-            } else {
-                counter.innerText = target;
-            }
-        });
-    };
-    
-    // Implement optional features when needed
-    
-    // 1. Floating action button to scroll to top (optional)
-    const createScrollTopButton = function() {
-        const button = document.createElement('button');
-        button.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        button.className = 'scroll-top-btn';
-        button.style.position = 'fixed';
-        button.style.bottom = '20px';
-        button.style.right = '20px';
-        button.style.zIndex = '99';
-        button.style.opacity = '0';
-        button.style.visibility = 'hidden';
-        button.style.width = '50px';
-        button.style.height = '50px';
-        button.style.borderRadius = '50%';
-        button.style.backgroundColor = 'var(--primary-color)';
-        button.style.color = 'white';
-        button.style.border = 'none';
-        button.style.cursor = 'pointer';
-        button.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-        button.style.transition = 'all 0.3s ease';
-        
-        document.body.appendChild(button);
-        
-        button.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 500) {
-                button.style.opacity = '1';
-                button.style.visibility = 'visible';
-            } else {
-                button.style.opacity = '0';
-                button.style.visibility = 'hidden';
-            }
-        });
-    };
-    
-    // Initialize scroll-to-top button
-    createScrollTopButton();
-    
-    // Add download tracking (for demo purposes)
+    // Add download tracking
     const downloadButtons = document.querySelectorAll('.btn-download');
     downloadButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            // This would typically track actual downloads
-            // For the demo, we'll just prevent default and show an alert
-            e.preventDefault();
+            // Track download event (for analytics)
+            if (typeof gtag === 'function') {
+                gtag('event', 'download', {
+                    'event_category': 'FileMergerPro',
+                    'event_label': 'Windows Download'
+                });
+            }
             
-            // Get OS from button text
-            const os = this.parentElement.querySelector('h3').textContent;
+            // Show download started message
+            const downloadOption = this.closest('.download-option');
+            const originalText = this.textContent;
             
-            // Show message
-            alert(`Thank you for your interest in FileMergerPro for ${os}!\n\nThis is a demo landing page. Downloads would typically be available on the actual website.`);
+            this.textContent = "Download Started...";
+            this.classList.add('downloading');
+            
+            // Reset the button text after a delay
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.classList.remove('downloading');
+            }, 3000);
         });
+    });
+    
+    // Add "copy to clipboard" functionality for code snippets
+    // This would be used if you add code examples to your landing page
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach(block => {
+        // Create copy button
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-btn';
+        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+        copyButton.title = 'Copy to clipboard';
+        
+        // Add copy button to parent pre element
+        block.parentNode.classList.add('code-container');
+        block.parentNode.appendChild(copyButton);
+        
+        // Add click event
+        copyButton.addEventListener('click', () => {
+            // Copy text to clipboard
+            navigator.clipboard.writeText(block.textContent)
+                .then(() => {
+                    // Show success 
+                    copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+        });
+    });
+    
+    // Enable image lightbox for screenshots
+    const screenshots = document.querySelectorAll('.feature-image img, .hero-image img');
+    screenshots.forEach(img => {
+        img.addEventListener('click', function() {
+            // This would be enhanced with a proper lightbox implementation
+            this.classList.toggle('enlarged');
+        });
+    });
+    
+    // Check for dark mode preference
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    if (prefersDarkScheme.matches) {
+        document.body.classList.add("dark-theme");
+    } else {
+        document.body.classList.add("light-theme");
+    }
+    
+    // Add version release date
+    const releaseDate = "May 10, 2023"; // Replace with actual date
+    const versionLabels = document.querySelectorAll('.version');
+    versionLabels.forEach(label => {
+        label.setAttribute('title', `Released on ${releaseDate}`);
     });
 });
