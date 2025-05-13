@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const downloadButtons = document.querySelectorAll('.btn-download');
     downloadButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            // Track download event (for analytics)
+            // Only track the event without preventing default
             if (typeof gtag === 'function') {
                 gtag('event', 'download', {
                     'event_category': 'FileMergerPro',
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.textContent = "Download Started...";
             this.classList.add('downloading');
             
-            // Reset the button text after a delay
+            // Reset the button text after a delay (we don't prevent the download)
             setTimeout(() => {
                 this.textContent = originalText;
                 this.classList.remove('downloading');
