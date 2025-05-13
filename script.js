@@ -157,7 +157,8 @@ document.addEventListener('DOMContentLoaded', function() {
             ...document.querySelectorAll('.feature-content'),
             ...document.querySelectorAll('.step'),
             ...document.querySelectorAll('.download-option'),
-            ...document.querySelectorAll('.faq-item')
+            ...document.querySelectorAll('.faq-item'),
+            ...document.querySelectorAll('.emoji-feature')
         ];
         
         elements.forEach(element => {
@@ -246,14 +247,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Enable image lightbox for screenshots
-    const screenshots = document.querySelectorAll('.feature-image img, .hero-image img');
-    screenshots.forEach(img => {
-        img.addEventListener('click', function() {
-            // This would be enhanced with a proper lightbox implementation
-            this.classList.toggle('enlarged');
+    // Add emoji animation and interaction
+    const largeEmojis = document.querySelectorAll('.emoji-large');
+    largeEmojis.forEach(emoji => {
+        emoji.addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.3)';
+            this.style.filter = 'drop-shadow(0 10px 25px rgba(65, 164, 245, 0.5))';
+        });
+
+        emoji.addEventListener('mouseout', function() {
+            this.style.transform = '';
+            this.style.filter = '';
         });
     });
+
+    // Random emoji animations
+    const featureEmojis = document.querySelectorAll('.emoji-feature');
+    featureEmojis.forEach(emoji => {
+        emoji.addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                const animations = ['spin', 'bounce', 'wobble'];
+                const randomAnim = animations[Math.floor(Math.random() * animations.length)];
+                this.style.animation = `${randomAnim} 1s ease`;
+            }, 10);
+        });
+    });
+    
+    // Define the animations in CSS dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0%); }
+            15% { transform: translateX(-15%) rotate(-5deg); }
+            30% { transform: translateX(10%) rotate(3deg); }
+            45% { transform: translateX(-10%) rotate(-3deg); }
+            60% { transform: translateX(5%) rotate(2deg); }
+            75% { transform: translateX(-5%) rotate(-1deg); }
+        }
+    `;
+    document.head.appendChild(style);
     
     // Check for dark mode preference
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
