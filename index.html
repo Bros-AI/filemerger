@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FileMergerPro - Merge & Analyze Code Files</title>
+    <title>FileMergerPro - Merge & Analyze Code Files with AI</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="FileMergerPro combines multiple source files into a single document and performs AI-powered code analysis to identify potential improvements, bugs, and optimization opportunities.">
+    <meta name="keywords" content="code merger, file merger, code analysis, OpenAI, GPT-4, code review, programming tools, developer tools">
+    <meta name="author" content="Bros AI">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bros-ai.github.io/filemerger/">
+    <meta property="og:title" content="FileMergerPro - Merge & Analyze Code with AI">
+    <meta property="og:description" content="Combine multiple source files and get AI-powered code analysis to improve your development workflow.">
+    <meta property="og:image" content="https://bros-ai.github.io/filemerger/preview-image.png">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FileMergerPro - Merge & Analyze Code with AI">
+    <meta name="twitter:description" content="Combine multiple source files and get AI-powered code analysis to improve your development workflow.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="description" content="FileMergerPro - A powerful tool for merging and analyzing code files with OpenAI integration">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bros-ai.github.io/filemerger/">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,6 +53,7 @@
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="https://bros.ai" target="_blank">About Us</a></li>
+                <li><a href="https://github.com/Bros-AI/filemerger/issues/new" target="_blank" class="github-link"><i class="fab fa-github"></i> Report Issue</a></li>
             </ul>
         </nav>
     </header>
@@ -173,25 +204,25 @@
                     </div>
                     <h3>Windows</h3>
                     <p>Windows 10 or later</p>
-                    <a href="#" class="btn btn-download">Download for Windows</a>
+                    <a href="https://drive.google.com/file/d/1ED5yIGuyO8l1IHMb1veKvcrmMocqRLAa/view?usp=drive_link" target="_blank" class="btn btn-download">Download for Windows</a>
                 </div>
                 
-                <div class="download-option">
+                <div class="download-option coming-soon">
                     <div class="download-icon">
                         <i class="fab fa-apple"></i>
                     </div>
                     <h3>macOS</h3>
                     <p>macOS 10.15 or later</p>
-                    <a href="#" class="btn btn-download">Download for macOS</a>
+                    <span class="coming-soon-label">Coming Soon</span>
                 </div>
                 
-                <div class="download-option">
+                <div class="download-option coming-soon">
                     <div class="download-icon">
                         <i class="fab fa-linux"></i>
                     </div>
                     <h3>Linux</h3>
                     <p>Ubuntu, Debian, Fedora</p>
-                    <a href="#" class="btn btn-download">Download for Linux</a>
+                    <span class="coming-soon-label">Coming Soon</span>
                 </div>
             </div>
             
@@ -216,6 +247,65 @@
         </div>
     </section>
 
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about FileMergerPro</p>
+            
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need an OpenAI API key to use FileMergerPro?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you'll need an OpenAI API key for the AI analysis features. The file merging functionality works without an API key. You can obtain an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI's website</a>.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Which file formats are supported?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>FileMergerPro supports a wide range of text and code files, including: Python (.py), JavaScript (.js), HTML (.html), CSS (.css), Java (.java), C/C++ (.c, .cpp), JSON (.json), XML (.xml), Markdown (.md), and plain text (.txt). The application detects file types based on their extensions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I analyze large codebases?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, but with limitations based on the OpenAI model you select. GPT-4o and GPT-4 Turbo support up to 128K tokens, while GPT-3.5 Turbo has a more limited context window. For very large codebases, we recommend analyzing specific components or modules rather than the entire codebase at once.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there a limit to how many files I can merge?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>There's no hard limit on the number of files you can merge. However, the practical limit depends on your system's memory and the size of the files. For AI analysis, you'll be limited by the token limits of the OpenAI model you're using.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>When will macOS and Linux versions be available?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We're actively working on macOS and Linux versions and plan to release them soon. In the meantime, advanced users can run the application from source code, which works on all platforms with Python 3.8+ and required dependencies. Check our <a href="https://github.com/Bros-AI/filemerger" target="_blank">GitHub repository</a> for updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -236,33 +326,64 @@
                     <div class="footer-links-column">
                         <h3>Resources</h3>
                         <ul>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">API Reference</a></li>
-                            <li><a href="#">Support</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="https://github.com/Bros-AI/filemerger/wiki" target="_blank">Documentation</a></li>
+                            <li><a href="https://github.com/Bros-AI/filemerger/issues/new" target="_blank">Support</a></li>
                         </ul>
                     </div>
                     <div class="footer-links-column">
                         <h3>Company</h3>
                         <ul>
                             <li><a href="https://bros.ai" target="_blank">About Us</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Legal</a></li>
+                            <li><a href="https://bros.ai/contact" target="_blank">Contact</a></li>
+                            <li><a href="https://bros.ai/terms" target="_blank">Terms</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>FileMergerPro v2.2.0 | <a href="https://bros.ai" target="_blank">Bros AI</a></p>
+                <p>FileMergerPro v2.2.0 | <a href="https://github.com/Bros-AI/filemerger/issues/new" target="_blank">Report an Issue</a></p>
+                <div class="made-with-love">
+                    <a href="https://bros.ai" target="_blank">Made with <span class="heart">❤️</span> by Bros AI</a>
+                </div>
                 <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Bros-AI/filemerger" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/BrosAI" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/bros-ai" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script src="script.js"></script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FileMergerPro",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "A tool for merging and analyzing code files with OpenAI integration.",
+        "softwareVersion": "2.2.0",
+        "datePublished": "2023-05-10",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Bros AI",
+            "url": "https://bros.ai"
+        }
+    }
+    </script>
 </body>
 </html>
